@@ -1,0 +1,46 @@
+#!/bin/bash
+set +h
+set -e
+
+
+
+PREV_SEC=${SECONDS}
+      
+ROOT=/
+
+SCRIPT_ROOT=jhalfs
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+SECONDS=${PREV_SEC}
+
+# Start of LFS book script
+cat > /etc/systemd/network/10-eth-static.network << "EOF"
+[Match]
+Name=enp3s0
+
+[Network]
+Address=192.168.0.103/24
+Gateway=192.168.0.1
+DNS=192.168.0.1
+DNS=
+Domains=local
+EOF
+echo "futurelinux" > /etc/hostname
+cat > /etc/hosts << "EOF"
+# Begin /etc/hosts
+
+127.0.0.1 localhost.localdomain localhost
+127.0.1.1 futurelinux.local futurelinux
+192.168.0.103 futurelinux.local futurelinux 
+::1       localhost ip6-localhost ip6-loopback
+ff02::1   ip6-allnodes
+ff02::2   ip6-allrouters
+
+# End /etc/hosts
+EOF
+echo -e "\n\nTotalseconds: $SECONDS\n"
+
+# End of LFS book script
+
+echo "KB: $(du -skx --exclude=lost+found --exclude=var/lib --exclude=$SCRIPT_ROOT $ROOT)"
+exit

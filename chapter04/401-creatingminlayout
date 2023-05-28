@@ -1,0 +1,12 @@
+#!/bin/bash
+set +h
+set -e
+
+mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,lib64,sbin}
+
+for i in bin lib lib64 sbin; do
+  ln -sv usr/$i $LFS/$i
+done
+
+mkdir -pv $LFS/tools
+exit
