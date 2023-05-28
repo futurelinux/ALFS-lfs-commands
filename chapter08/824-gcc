@@ -67,7 +67,7 @@ mkdir -pv $PKG_DEST/usr/lib64/bfd-plugins
 ln -sfv ../../libexec/gcc/$(gcc/xgcc -dumpmachine)/13.1.0/liblto_plugin.so \
         $PKG_DEST/usr/lib64/bfd-plugins/
 mkdir -pv $PKG_DEST/usr/share/gdb/auto-load/usr/lib64
-mv -v $PKG_DEST/usr/lib/*gdb.py $PKG_DEST/usr/share/gdb/auto-load/usr/lib64
+mv -v $PKG_DEST/usr/lib64/*gdb.py $PKG_DEST/usr/share/gdb/auto-load/usr/lib64
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
            $PKG_DEST/usr/share/{doc,info,man,} \
