@@ -45,7 +45,6 @@ ln -sv usr/sbin $PKG_DEST
 ln -sv usr/bin  $PKG_DEST
 ln -sv usr/lib  $PKG_DEST
 ln -sv usr/lib64  $PKG_DEST
-ln -sv usr/lib  $PKG_DEST
 make -j1 DESTDIR=$PKG_DEST install
 for dir in $PKG_DEST/usr/share/man/man{1..8} \
            $PKG_DEST/usr/share/bash-completion{/completions,} \
